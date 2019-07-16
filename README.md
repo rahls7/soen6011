@@ -1,5 +1,5 @@
 # SOEN-6011
-Software Engineering Processes
+Software Engineering Processes: Calculator CLI App
 
 # FUNCTIONS
 
