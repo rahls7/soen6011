@@ -4,8 +4,8 @@ public class Model {
 	
     public static double calculateExpression(String expression) {
 
-        Stack<Double> operandStack = new Stack<>();
-        Stack<Character> operatorStack = new Stack<>();
+        Stack<Double> operandStack = new Stack<Double>();
+        Stack<Character> operatorStack = new Stack<Character>();
 
         if (!isValidExpression(expression)) {
             System.out.println("Not a valid expression to evaluate");
@@ -16,7 +16,6 @@ public class Model {
         String currentInteger = null;
         while (i < expression.length()) {
 
-            // System.out.println(expression.charAt(i));
             if (expression.charAt(i) >= '0' && expression.charAt(i) <= '9') {
 
                 currentInteger = expression.charAt(i) + "";
@@ -57,8 +56,6 @@ public class Model {
             performArithmeticOperation(operandStack, operatorStack);
         }
 
-    //    System.out.println(Arrays.toString(operandStack.toArray()));
-    //    System.out.println(Arrays.toString(operatorStack.toArray()));
 
         return operandStack.pop();
 
@@ -66,8 +63,6 @@ public class Model {
 
     public static void performArithmeticOperation(Stack<Double> operandStack, Stack<Character> operatorStack) {
         try {
-        	System.out.println(operandStack.toString());
-        	System.out.println(operatorStack.toString());
             double value1 = operandStack.pop();
             double value2 = operandStack.pop();
             char operator = operatorStack.pop();
@@ -83,7 +78,7 @@ public class Model {
 
     public static boolean checkPrecedence(Character operator1, Character operator2) {
 
-        List<Character> precedenceList = new ArrayList<>();
+        List<Character> precedenceList = new ArrayList<Character>();
         precedenceList.add('(');
         precedenceList.add(')');
         precedenceList.add('^');
@@ -151,7 +146,7 @@ public class Model {
             return false;
         }
 
-        HashSet<Character> validCharactersSet = new HashSet<>();
+        HashSet<Character> validCharactersSet = new HashSet<Character>();
         validCharactersSet.add('*');
         validCharactersSet.add('+');
         validCharactersSet.add('-');
@@ -161,13 +156,10 @@ public class Model {
         validCharactersSet.add('(');
         validCharactersSet.add(')');
 
-        Stack<Character> validParenthesisCheck = new Stack<>();
-    	System.out.println(expression);
+        Stack<Character> validParenthesisCheck = new Stack<Character>();
 
         for (int i = 0; i < expression.length(); i++) {
-        	System.out.println(expression.charAt(i));
             if (!Character.isDigit(expression.charAt(i)) && !(expression.charAt(i) == '.') && !validCharactersSet.contains(expression.charAt(i))) {
-
                 return false;
             }
 
