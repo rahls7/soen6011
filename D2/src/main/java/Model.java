@@ -138,7 +138,11 @@ public class Model {
         return result;
     }
 
-
+    /**
+     * 
+     * @param expression
+     * @return
+     */
     public static boolean isValidExpression(String expression) {
 
         if ((!Character.isDigit(expression.charAt(0)) && !(expression.charAt(0) == '(') && !(expression.charAt(0) == '.'))
@@ -184,6 +188,12 @@ public class Model {
     }
     
     public static double calculateExponent(double value1, double value2) {
+    	String valueString = Double.toString(value2);
+    	String [] numberAsArray = valueString.split("\\.");
+
+    	if (Integer.parseInt(numberAsArray[1]) > 0) {
+    		return calculatePowerForReal(value1, value2);
+    	}
     	if (value2 < 0.0) {
     		value1 = 1.0 / value1;
     		value2 = value2 * -1;
@@ -198,5 +208,78 @@ public class Model {
     		value2 = (value2 - 1) / 2;
     		return value1 * calculateExponent(value1 * value1, value2);
     	}
+    }
+    
+    
+    
+    
+    /**
+     * Calculates the factorial for the given number.
+     * @param number This is a given number.
+     * @return factorial This is the factorial of the given number.
+     */
+    
+    public static double calculateFactorial(double number)  {
+      if (number <= 1) {
+        return 1;
+      }  else {
+        return (number * calculateFactorial(number - 1));     
+      }
+    }
+
+    
+    
+    /**
+     * Calculates the Natural log for the given number.
+     * @param number This is a given number.
+     * @return ans This is the natural log of given number.
+     */
+
+    public static double calculateNaturalLog(double number) {
+      double ans = 0;
+      double base = (number - 1) / (number + 1);
+      for (int i = 1; i <= 125; i++) {
+        double exponent = 2 * i - 1;
+        ans += (1 / exponent) * (calculateExponent(base,exponent));
+      }
+      return 2 * ans;           
+    }
+
+    
+    /**
+     * Calculates the power for any user given numbers.
+     * @param x This is a base.
+     * @param y This is a exponent.
+     * @return answer This is the power x raised to the power of y.
+     */
+
+    public static double calculatePowerForReal(double x,double y) {
+      double answer = 0;
+      double logValue;
+    
+      if (y == 0) {
+        answer = 1;
+        return answer;
+      }
+      if (x < 0) {
+        logValue = calculateNaturalLog(x * (-1));
+      } else {
+        logValue = calculateNaturalLog(x);
+      }
+      if (x == 0 && y > 0) {
+        return answer;
+      }
+      
+      for (int i = 0; i <= 125; i++) {
+        double numerator = calculateExponent((y * logValue),i);
+        double denominator = calculateFactorial(i);
+        answer = answer + (numerator / denominator);
+      } 
+      
+      if (x < 0 && y % 2 != 0) {
+        return answer * (-1);
+      } else {
+        return answer;
+      }
     }
 }

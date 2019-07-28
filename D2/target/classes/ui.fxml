@@ -12,7 +12,7 @@
 <?import javafx.scene.text.*?>
 <?import javafx.scene.paint.Color?>
 
-<VBox spacing="10" alignment="CENTER" prefWidth="300" prefHeight="300" fx:controller="Controller" xmlns:fx="http://javafx.com/fxml">
+<VBox spacing="10" alignment="CENTER" prefWidth="400" prefHeight="400" fx:controller="Controller" xmlns:fx="http://javafx.com/fxml">
     <fx:define>
         <Font fx:id="FONT" size="18" />
     </fx:define>
@@ -53,6 +53,10 @@
         <Button text="clear" prefWidth="110" font="$FONT" onAction="#processClear" />
         <Button text="." prefWidth="50" font="$FONT" onAction="#processNumpad" />
         <Button text="^" prefWidth="50" font="$FONT" onAction="#processOperator" />
+    </HBox>
+        <HBox spacing="10" alignment="CENTER">
+        <Button text="(" prefWidth="50" font="$FONT" onAction="#processOperator" />
+        <Button text=")" prefWidth="50" font="$FONT" onAction="#processOperator" />
     </HBox>
     
 </VBox>
