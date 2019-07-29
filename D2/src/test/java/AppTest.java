@@ -12,6 +12,14 @@ public class AppTest {
         assertEquals(16.0, exponentValue,0);
 
     }
+    
+    @Test
+    public void testCalculateExponentFraction() {
+
+        double exponentValue = model.calculateExponent(4.0, 0.5);
+        assertEquals(2.0, exponentValue,0);
+
+    }
 
     @Test
     public void testCalculateExponentNegative() {
