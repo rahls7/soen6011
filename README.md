@@ -13,3 +13,5 @@ F7: a^b^x => Sidharth Sharma
 F8: B(x, y) => Samaneh  
 F9: x^y => Gurjot  
 
+# Installation for D2
+run mvn clean install
