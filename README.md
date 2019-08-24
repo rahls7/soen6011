@@ -3,6 +3,7 @@ Software Engineering Processes: Calculator CLI App
 
 # FUNCTIONS
 
+
 F1: arccos(x) => Birva Harshadbhai  
 F2: tan(x) => Hetvi  
 F3: sinh(x) => Ruthvik Prasad  
